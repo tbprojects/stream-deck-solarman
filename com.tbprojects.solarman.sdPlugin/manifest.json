@@ -1,0 +1,47 @@
+{
+	"$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+	"Author": "tbprojects",
+	"CodePath": "bin/plugin.js",
+	"Description": "Displays battery status and energy storage information from Solarman PV.",
+	"Icon": "imgs/plugin-icon",
+	"Name": "Solarman",
+	"Category": "Solarman",
+	"CategoryIcon": "imgs/category-icon",
+	"Version": "1.0.0.0",
+	"SDKVersion": 2,
+	"Software": {
+		"MinimumVersion": "6.6"
+	},
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "13"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"UUID": "com.tbprojects.solarman",
+	"Actions": [
+		{
+			"Icon": "imgs/action-icon",
+			"Name": "Battery Status",
+			"UUID": "com.tbprojects.solarman.battery-status",
+			"PropertyInspectorPath": "ui/property-inspector.html",
+			"States": [
+				{
+					"Image": "imgs/action-icon"
+				}
+			],
+			"Controllers": [
+				"Keypad"
+			],
+			"DisableAutomaticStates": true
+		}
+	]
+}

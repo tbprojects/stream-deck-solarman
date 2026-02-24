@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<script src="sdpi-components.js"></script>
+	<style>
+		body {
+			font-family: system-ui, sans-serif;
+		}
+		.sdpi-item-label {
+			display: block;
+			margin-bottom: 4px;
+			font-size: 11px;
+			color: #999;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+		.hint {
+			font-size: 10px;
+			color: #666;
+			margin-top: 2px;
+			padding: 0 4px;
+		}
+	</style>
+</head>
+<body>
+	<div class="sdpi-wrapper">
+		<div class="sdpi-item">
+			<div class="sdpi-item-label">Grid ID</div>
+			<sdpi-textfield
+				id="gridId"
+				setting="gridId"
+				placeholder="Enter your Grid ID"
+			></sdpi-textfield>
+			<p class="hint">The numeric ID at the end of the API request URL — see instructions below.</p>
+		</div>
+
+		<div class="sdpi-item">
+			<div class="sdpi-item-label">Auth Token</div>
+			<sdpi-password
+				id="authToken"
+				setting="authToken"
+				placeholder="Enter your Bearer token"
+			></sdpi-password>
+			<p class="hint">Bearer token from the Authorization header — see instructions below.</p>
+		</div>
+
+		<div class="sdpi-item" style="margin-top:8px;">
+			<p style="font-size:10px; color:#666; line-height:1.7; margin:0; padding:0 4px;">
+				<strong style="color:#aaa;">Short press</strong> — toggle battery / details view<br>
+				<strong style="color:#aaa;">Long press</strong> — open Solarman in browser
+			</p>
+		</div>
+
+		<div class="sdpi-item">
+			<details>
+				<summary style="cursor:pointer; font-size:11px; color:#888;">How to find Grid ID &amp; Auth Token</summary>
+				<ol style="font-size:10px; color:#888; padding-left:16px; line-height:1.8;">
+					<li>Open <a href="https://globalhome.solarmanpv.com" target="_blank" style="color:#4a9eff;">globalhome.solarmanpv.com</a> and log in.</li>
+					<li>Open DevTools (<strong style="color:#aaa;">F12</strong>) → <strong style="color:#aaa;">Network</strong> tab.</li>
+					<li>Reload the page and find a request to:<br>
+						<code style="color:#4a9eff; word-break:break-all;">/maintain-s/operating/system/<strong>{your-id}</strong></code>
+					</li>
+					<li>The number at the end of that URL is your <strong style="color:#aaa;">Grid ID</strong>.</li>
+					<li>In the request headers, copy the value after <code style="color:#4a9eff;">Bearer&nbsp;</code> from the <strong style="color:#aaa;">Authorization</strong> header — that is your <strong style="color:#aaa;">Auth Token</strong>.</li>
+				</ol>
+			</details>
+		</div>
+	</div>
+
+	<script>
+		const { streamDeckClient } = SDPIComponents;
+
+		streamDeckClient.didReceiveSettings(({ payload }) => {
+			const { settings } = payload;
+			document.getElementById("gridId").value = settings.gridId ?? "";
+			document.getElementById("authToken").value = settings.authToken ?? "";
+		});
+	</script>
+</body>
+</html>
