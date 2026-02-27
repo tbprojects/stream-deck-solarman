@@ -1,11 +1,11 @@
 {
   "name": "stream-deck-solarman",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Solarman battery status plugin for Elgato Stream Deck",
   "scripts": {
     "build": "rollup --config rollup.config.mjs",
     "watch": "rollup --config rollup.config.mjs --watch",
-    "pack": "npm run build && streamdeck pack com.tbprojects.solarman.sdPlugin --force",
+    "pack": "npm run build && npm run build && streamdeck pack com.tbprojects.solarman.sdPlugin --force",
     "restart": "osascript -e 'quit app \"Elgato Stream Deck\"' ; sleep 2 ; open -a \"Elgato Stream Deck\""
   },
   "dependencies": {
