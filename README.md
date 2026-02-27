@@ -20,7 +20,7 @@ An Elgato Stream Deck plugin that displays the battery status and state of charg
 ## Requirements
 
 - [Node.js](https://nodejs.org/) 20+
-- [Stream Deck](https://www.elgato.com/stream-deck) application 6.6+
+- [Stream Deck](https://www.elgato.com/stream-deck) application 6.9+
 - An account at [globalhome.solarmanpv.com](https://globalhome.solarmanpv.com/)
 
 ## Local development
